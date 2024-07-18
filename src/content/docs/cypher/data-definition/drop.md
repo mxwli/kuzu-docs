@@ -43,13 +43,22 @@ DROP TABLE User
 -------------------------------------
 ```
 
+<<<<<<< HEAD
 ## Drop if exists
 If the given table does not exist in the database, Kùzu throws an exception when you try to drop it.
 To avoid the exception being raised, use the `IF EXISTS` clause. This instructs Kùzu to do nothing when
+=======
+## IF EXISTS
+If the given table does not exist in the database, Kùzu throws an exception when you try to drop it. To avoid the exception being raised, use the `IF EXISTS` clause. This instructs Kùzu to do nothing when
+>>>>>>> dff485a (Ziyi v0.5.0 (#182))
 the given table name does not exist in the database.
 
 Example:
 ```sql
 DROP TABLE IF EXISTS UW
 ```
+<<<<<<< HEAD
 This query tells Kùzu to drop the `UW` table only if it exists.
+=======
+This query tells Kùzu to drop the `UW` table only if it exists.
+>>>>>>> dff485a (Ziyi v0.5.0 (#182))
