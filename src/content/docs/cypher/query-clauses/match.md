@@ -512,7 +512,11 @@ Output:
 ```
 
 ### Extracting nodes and relationships from a path
+<<<<<<< HEAD
 A named path has the logical data type [`RECURSIVE_REL`](/cypher/data-types/#recursive-rel). You can access nodes and relationships within a named path through `nodes(p)` and `rels(p)` function calls.
+=======
+Internally `PATH` is processed as a `STRUCT{LIST[NODE], LIST[REL]}` see [`PATH data type`](/cypher/data-types/#path) for details. Users can access nodes and relationships within a path through `nodes(p)` and `rels(p)` function calls.
+>>>>>>> b5e723d (Add JSON Documentation (#185))
 
 ```cypher
 MATCH p = (a:User)-[:Follows*1..2]->(:User) 
@@ -533,7 +537,11 @@ Output:
 | [{_ID: 0:0, _LABEL: User, name: Adam, age: 30},{_ID: 0:2, _LABEL: User, name:... | 2020  |
 --------------------------------------------------------------------------------------------
 ```
+<<<<<<< HEAD
 More recursive relationship functions can be found [here](/cypher/expressions/path-functions).
+=======
+More path functions can be found [here](/cypher/expressions/path-functions).
+>>>>>>> b5e723d (Add JSON Documentation (#185))
 
 [^1]: `MATCH` is similar to the `FROM` clause of SQL, where the list of tables that need to be joined are specified. 
 [^2]: Max number of hop will be set to 30 if omitted. You can change the configuration through `SET` statement.
