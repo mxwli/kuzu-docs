@@ -437,11 +437,17 @@ Output:
 
 ## SERIAL
 
+<<<<<<< HEAD
 `SERIAL` is a logical data type used for creating an auto-incrementing sequence of numbers, typically
 used as a unique column identifier, similar to `AUTO_INCREMENT` feature supported
 by some other databases. 
 
 #### Using `SERIAL` as primary key column in node tables
+=======
+`SERIAL` is a logical data type used for creating an auto-incrementing sequence, typically
+used as a unique column identifier.  identifier (similar to `AUTO_INCREMENT` feature supported
+by some other databases).
+>>>>>>> 0612656 (Update serial)
 
 ```
 // person.csv
@@ -454,6 +460,7 @@ Dan
 ```cypher
 CREATE NODE TABLE Person(id SERIAL, name STRING, PRIMARY KEY(id));
 COPY Person FROM 'person.csv';
+<<<<<<< HEAD
 MATCH (a:Person) RETURN a.*;
 ```
 Output:
@@ -476,6 +483,21 @@ scenario where you want to auto-generate a unique transaction ID for each transf
 
 ```cypher
 CREATE REL TABLE Transfer (from User to User, trx_id SERIAL);
+=======
+MATCH (a:Person) RETURN a;
+```
+Output:
+```
+-------------------------------------------
+| a                                       |
+-------------------------------------------
+| (label:Person, 3:0, {id:0, name:Alice}) |
+-------------------------------------------
+| (label:Person, 3:1, {id:1, name:Bob})   |
+-------------------------------------------
+| (label:Person, 3:2, {id:2, name:Carol}) |
+-------------------------------------------
+>>>>>>> 0612656 (Update serial)
 ```
 
 ## NODE
@@ -684,3 +706,68 @@ the following two triples:
 └────────────────────────────────┴───────────────────────────────────────┴─────────────┘
 ```
 
+<<<<<<< HEAD
+=======
+## PATH
+
+`PATH` is a logical type. Internally, `PATH` is processed as `STRUCT` type, more specifically, a
+`STRUCT{LIST[NODE], LIST[REL]}`. A `PATH` always contains a nodes field with the key `_NODES` and a
+relationships field with the key `_RELS`.
+
+#### Return `PATH` column
+```cypher
+MATCH p = (a:User)-[:Follows]->(b:User) 
+WHERE a.name = 'Adam' AND b.name = 'Karissa' 
+RETURN p;
+```
+Output:
+```
+{_NODES: [{_ID: 0:0, _LABEL: User, name: Adam, age: 30},{_ID: 0:1, _LABEL: User, name: Karissa, age: 40}], _RELS: [(0:0)-{_LABEL: Follows, _ID: 2:0, since: 2020}->(0:1)]}
+```
+
+#### Access all nodes on a path
+```cypher
+MATCH p = (a:User)-[:Follows]->(b:User) 
+WHERE a.name = 'Adam' AND b.name = 'Karissa' 
+RETURN nodes(p);
+```
+Output:
+```
+[{_ID: 0:0, _LABEL: User, name: Adam, age: 30},{_ID: 0:1, _LABEL: User, name: Karissa, age: 40}]
+```
+
+#### Access all rels on a path
+```cypher
+MATCH p = (a:User)-[:Follows]->(b:User) 
+WHERE a.name = 'Adam' AND b.name = 'Karissa' 
+RETURN rels(p);
+```
+Output:
+```
+[(0:0)-{_LABEL: Follows, _ID: 2:0, since: 2020}->(0:1)]
+```
+
+## User-defined types
+
+
+Kùzu allows you to define a customized datatype in the system, by leveraging an existing built-in
+type. The process of creating types involves using the `CREATE TYPE` keyword followed by
+the type name. The `AS` keyword comes next, followed by an existing type in the system. This type
+is useful when you want to create a new type that is more relevant to your business
+logic, or when you want to create an alias for an existing type.
+
+The grammar for creating a user-defined type is as follows:
+
+```cypher
+CREATE TYPE <type_name> AS <existing_type>
+```
+
+Read more about user-defined types by clicking on the card below.
+
+<LinkCard
+  title="User-defined types"
+  href="/cypher/data-types/user-defined-types"
+  description="How to define and use a user-defined type"
+/>
+
+>>>>>>> 0612656 (Update serial)
