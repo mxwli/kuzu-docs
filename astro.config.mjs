@@ -125,6 +125,7 @@ export default defineConfig({
                     collapsed: true,
                     items: [
                         { label: 'Overview', link: '/client-apis/' },
+                        { label: 'Concurrency', link: '/client-apis/concurrency', badge: { text: 'Guide', variant: 'note'} },
                         { label: 'CLI', link: '/client-apis/cli' },
                         { label: 'Python', link: '/client-apis/python' },
                         { label: 'Node.js', link: '/client-apis/nodejs' },
