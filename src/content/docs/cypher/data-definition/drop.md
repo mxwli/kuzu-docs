@@ -44,6 +44,7 @@ DROP TABLE User
 ```
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## Drop if exists
 If the given table does not exist in the database, Kùzu throws an exception when you try to drop it.
 To avoid the exception being raised, use the `IF EXISTS` clause. This instructs Kùzu to do nothing when
@@ -54,11 +55,29 @@ If the given table does not exist in the database, Kùzu throws an exception whe
 the given table name does not exist in the database.
 
 Example:
+=======
+## IF EXISTS
+
+Alternatively, you can avoid the exception being raised by using the `IF EXISTS` clause. This instructs
+Kùzu to do nothing when the given table name does not exist in the database.
+
+>>>>>>> c5e8393 (Updates to DDL, map and struct data type docs (#203))
 ```sql
-DROP TABLE IF EXISTS UW
+DROP TABLE IF EXISTS User
 ```
+<<<<<<< HEAD
 <<<<<<< HEAD
 This query tells Kùzu to drop the `UW` table only if it exists.
 =======
 This query tells Kùzu to drop the `UW` table only if it exists.
 >>>>>>> dff485a (Ziyi v0.5.0 (#182))
+=======
+
+## Drop SEQUENCE
+
+You can drop a `SEQUENCE` similar to the way you drop a table:
+
+```sql
+DROP SEQUENCE sequence_name;
+```
+>>>>>>> c5e8393 (Updates to DDL, map and struct data type docs (#203))
